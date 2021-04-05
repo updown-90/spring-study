@@ -8,13 +8,22 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+    // 변경 전
     // 고정할인금액와 비율할인정책을 변경하려면 아래 구현객체만 변경하면된다
     // 아래 둘 다 OCP, DIP 위반
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 이런식으로 DiscountPolicy 인터페이스는 본인이 어떤 구현체를 사용할지 까지는 안해야 관심사의 분리가 된다 OCP, DIP
-//    private DiscountPolicy discountPolicy; // OCP 통과
+//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 이런식으로 DiscountPolicy 인터페이스는 본인이 어떤 구현체를 사용할지 까지는 안해야 관심사의 분리가 된다 OCP, DIP
+
+    // 변경 후
+//   private DiscountPolicy discountPolicy; // OCP 통과
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
