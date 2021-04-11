@@ -2,7 +2,9 @@ package hello.core.disconunt;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountFixPercent = 10; // 1000원 할인

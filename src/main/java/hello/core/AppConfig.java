@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
 //    @Bean(name = "changeBeanName") -> 이런식으로 변경할수도 있음
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMemberRepository()
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
