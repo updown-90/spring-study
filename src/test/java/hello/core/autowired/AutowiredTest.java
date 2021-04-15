@@ -1,5 +1,6 @@
 package hello.core.autowired;
 
+import hello.core.beandefinition.BeanDefinitionTest;
 import hello.core.member.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.Optional;
 public class AutowiredTest {
 
     @Test
-    void AutowiredOption() {
+    public void AutowiredOption() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
 
     }
@@ -36,4 +37,5 @@ public class AutowiredTest {
             System.out.println("noBean3" + noBean3);
         }
     }
+
 }
